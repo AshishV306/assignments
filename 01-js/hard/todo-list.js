@@ -12,33 +12,29 @@
 
 class Todo {
   constructor() {
-    this.clear();
+    this.taskList = [];
   }
-
   add(todo) {
-    this.todos.push(todo);
+    this.taskList.push(todo);
   }
-
-  remove(indexOfTodo) {
-    this.todos.splice(indexOfTodo, 1);
+  remove(idx) {
+    this.taskList.splice(idx, 1);
   }
-
-  update(indexOfTodo, updatedTodo) {
-    if (indexOfTodo >= this.todos.length) return this.getAll();
-    this.todos[indexOfTodo] = updatedTodo;
+  update(idx, updatedTodo) {
+    if (updatedTodo === "Invalid Task" || idx >= this.taskList.length) {
+      return;
+    }
+    this.taskList[idx] = updatedTodo;
   }
-
   getAll() {
-    return [...this.todos];
+    return this.taskList;
   }
-
-  get(indexOfTodo) {
-    if (indexOfTodo >= this.todos.length) return null;
-    return this.todos[indexOfTodo];
+  get(idx) {
+    if (idx >= this.taskList.length) return null;
+    return this.taskList[idx];
   }
-
   clear() {
-    this.todos = [];
+    this.taskList = [];
   }
 }
 
